@@ -99,10 +99,10 @@ class _TrackPageState extends State<TrackPage> {
             onMapCreated: (controller) => _googleMapController = controller,
             markers: {
               if (_origin != null) _origin!,
-              if (_destination != null) _destination,
+              _destination,
             },
             polylines: {
-              if (_info != null)
+              if (_info != null && _info!.polylinePoints.isEmpty)
                 Polyline(
                   polylineId: const PolylineId('overview_polyline'),
                   color: Colors.purpleAccent,

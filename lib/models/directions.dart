@@ -18,7 +18,7 @@ class Directions {
 //Bounds
   factory Directions.fromMap(Map<String, dynamic> map) {
     //check if route is avalible
-    if ((map['routes'] as List).isEmpty) return null!;
+    if (map['routes'] == null || (map['routes'] as List).isEmpty) return null!;
 
     final data = Map<String, dynamic>.from(map['routes'][0]);
 
@@ -32,7 +32,7 @@ class Directions {
 
     String distance = '';
     String duration = '';
-    if ((data['legs'] as List).isEmpty) {
+    if (data['legs'] != null && (data['legs'] as List).isNotEmpty) {
       final leg = data['legs'][0];
       distance = leg['distance']['text'];
       duration = leg['duration']['text'];
